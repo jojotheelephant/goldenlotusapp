@@ -1,7 +1,7 @@
 import React from "react";
 
-// Typechecks our props. Typecheck at the bottom of page
-import PropTypes from "prop-types";
+// // Typechecks our props. Typecheck at the bottom of page
+// import PropTypes from "prop-types";
 
 const Rating = ({ rating, reviews, color }) => {
     return (
@@ -75,10 +75,10 @@ Rating.defaultProps = {
     color: "#f8e825",
 };
 
-Rating.propTypes = {
-    rating: PropTypes.number.isRequired,
-    reivews: PropTypes.string,
-    color: PropTypes.string,
-};
+// Rating.propTypes = {
+//     rating: PropTypes.number.isRequired,
+//     reivews: PropTypes.string,
+//     color: PropTypes.string,
+// };
 
 export default Rating;

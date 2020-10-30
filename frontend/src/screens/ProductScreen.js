@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // import Link for navigating through the site without reload
 import { Link } from "react-router-dom";
@@ -9,12 +9,23 @@ import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 // import components
 import Rating from "../Components/Rating";
 
-// import temp values
-import products from "../products";
+// import axios
+import axios from "axios";
 
 const ProductScreen = ({ match }) => {
-    // match props is taken from Router
-    const product = products.find((product) => product._id === match.params.id);
+    // useState
+    const [product, setProduct] = useState([]);
+
+    // useEffect
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(
+                `/api/products/${match.params.id}`
+            );
+            setProduct(data);
+        };
+        fetchProduct();
+    }, [match]);
 
     return (
         <div>

@@ -1,0 +1,19 @@
+frontend
+1. React
+2. React BootStrap
+3. React Router
+4. React Router BootStrap
+5. Axios
+6. Font-Awesome (icons)
+
+backend
+1. Express
+2. Nodemon
+3. Concurrently
+4. Dotenv
+5. MongoDB
+6. Mongoose
+7. Color (optional)
+8. bcryptjs - password
+9. express-async-handler (middleware)
+

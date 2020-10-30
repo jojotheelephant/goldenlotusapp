@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-// import temp product menu
-import products from "../products";
+// import axios for server requests
+import axios from "axios";
 
 // import Bootstrap (does not need container module)
 import { Row, Col } from "react-bootstrap";
@@ -10,6 +10,18 @@ import { Row, Col } from "react-bootstrap";
 import Product from "../Components/Product";
 
 const HomeScreen = () => {
+    // useState
+    const [products, setProducts] = useState([]);
+
+    // useEffect - axios request to server for product information
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const { data } = await axios.get("/api/products");
+            setProducts(data);
+        };
+        fetchProducts();
+    }, []);
+
     return (
         <>
             <h1>Latest Products</h1>
