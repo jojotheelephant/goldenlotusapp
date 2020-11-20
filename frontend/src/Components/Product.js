@@ -1,8 +1,6 @@
 import React from "react";
-
-// import Link (stops reload of favicon) upon click
+// import Link (stops reload of favicon) upon click. This is similar to <a> tag but specific for React-Router
 import { Link } from "react-router-dom";
-
 // import bootstrap 'Card'
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
@@ -26,7 +24,7 @@ const Product = ({ product }) => {
                     <Rating
                         rating={product.rating}
                         reviews={`${product.numReviews} reviews`}
-                        color="red"
+                        color="grey"
                     />
                 </Card.Text>
 

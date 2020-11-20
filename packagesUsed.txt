@@ -5,6 +5,11 @@ frontend
 4. React Router BootStrap
 5. Axios
 6. Font-Awesome (icons)
+7. Redux
+8. React-Redux
+9. Redux Thunk (async request)
+10. Redus Devtools extensions
+
 
 backend
 1. Express

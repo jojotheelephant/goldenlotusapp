@@ -1,38 +1,43 @@
-import React, { useState, useEffect } from "react";
-
-// import axios for server requests
-import axios from "axios";
-
+import React, { useEffect } from "react";
 // import Bootstrap (does not need container module)
 import { Row, Col } from "react-bootstrap";
-
 // import Components
 import Product from "../Components/Product";
+import Message from "../Components/Message";
+import Loader from "../Components/Loader";
+// for redux
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../actions/productActions";
 
 const HomeScreen = () => {
-    // useState
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
 
-    // useEffect - axios request to server for product information
+    const productList = useSelector((state) => state.productList);
+    // pull these from the state
+    const { loading, error, products } = productList;
+
+    // useEffect - using redux
     useEffect(() => {
-        const fetchProducts = async () => {
-            const { data } = await axios.get("/api/products");
-            setProducts(data);
-        };
-        fetchProducts();
-    }, []);
+        dispatch(listProducts());
+    }, [dispatch]);
 
     return (
         <>
             <h1>Latest Products</h1>
-            <Row>
-                {products.map((product) => (
-                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                        {/* Passed into Product Component as a prop */}
-                        <Product product={product} />
-                    </Col>
-                ))}
-            </Row>
+            {loading ? (
+                <Loader />
+            ) : error ? (
+                <Message variant="danger">{error}</Message>
+            ) : (
+                <Row>
+                    {products.map((product) => (
+                        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                            {/* Passed into Product Component as a prop */}
+                            <Product product={product} />
+                        </Col>
+                    ))}
+                </Row>
+            )}
         </>
     );
 };

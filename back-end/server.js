@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 // import productRoutes
 import productRoutes from "./routes/productRoutes.js";
+// import userRoutes
+import userRoutes from "./routes/userRoutes.js";
 // bring in the error handling middleware
 import { notFound, errorHandler } from "./middleware/errormiddleware.js";
 
@@ -18,6 +20,9 @@ connectDB();
 // start express and naming app
 const app = express();
 
+// allows for acceptance of JSON data in body of requests
+app.use(express.json());
+
 // set PORT using process.env
 const PORT = process.env.PORT || 5000;
 
@@ -28,6 +33,7 @@ app.get("/", (req, res, next) => {
 
 // ---ROUTES---
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // --- ERROR HANDLING --- (bottom of code)
 // Error handling middleware if a route is not found. Creates a new error object and passes to next error handler.
