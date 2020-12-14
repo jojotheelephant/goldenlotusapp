@@ -45,6 +45,10 @@ const orderSchema = mongoose.Schema(
                 type: String,
                 required: true,
             },
+            state: {
+                type: String,
+                required: true,
+            },
             country: {
                 type: String,
                 required: true,
@@ -88,7 +92,7 @@ const orderSchema = mongoose.Schema(
             required: true,
             default: false,
         },
-        delivererdAt: {
+        deliveredAt: {
             type: Date,
         },
     },
